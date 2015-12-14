@@ -17,10 +17,9 @@ for (i in 3:9){
 
 ##Plot 4
 png(filename = 'plot4.png',width = 480, height = 480, units = "px")
-
-par(mfrow = c(2, 2), mar = c(5, 4, 2, 1))
+par(mfrow = c(2, 2), mar = c(4, 4, 1, 1))
 with(data, plot(datetime, Global_active_power, main = "",xlab ="",ylab="Global Active power",type = "l"))
-with(data, plot(datetime, Voltage, main = "",xlab ="",ylab="Voltage",type="l"))
+with(data, plot(datetime, Voltage, main = "",xlab ="datetime",ylab="Voltage",type="l"))
 
 
 ######################3
@@ -41,9 +40,9 @@ with(data,
              max(Sub_metering_3)
            )   )
          , type="n", xlab="" , ylab="Energy Sub Metering")
-       lines(datetime, Sub_metering_1, col="black", lwd=2)
-       lines(datetime, Sub_metering_2, col="red", lwd=2)
-       lines(datetime, Sub_metering_3, col="blue", lwd=2)
+       lines(datetime, Sub_metering_1, col="black", lwd=1)
+       lines(datetime, Sub_metering_2, col="red", lwd=1)
+       lines(datetime, Sub_metering_3, col="blue", lwd=1)
        legend("topright"
               ,inset=.05
               ,cex = 1
@@ -53,11 +52,15 @@ with(data,
               ,lty=c(1) 
               ,lwd=c(1)
               , bty="n"
-              #,text.font =1
+              ,text.font =1
        )
      }
 )
 
-with(data, plot(datetime, Global_reactive_power, main = "",xlab ="",ylab="Global Reactive power",type="l"))
 
+with(data, {
+  plot(datetime, Global_reactive_power, main = "",xlab ="datetime",ylab="Global Reactive power",type="l",col="black",lty=1,lwd=1
+       )
+  }
+  )
 dev.off()
